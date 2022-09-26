@@ -1,8 +1,8 @@
 <template>
   <div class="container mt-5">
-    <div class="row">
+    <div class="row justify-content-center">
       <card-component
-        class="col-2 cards"
+        class="col-lg-2 col-md-3 col-sm-8 col-12 cards"
         v-for="(poster, index) in posters"
         :key="index"
         :author="poster.author"
@@ -16,7 +16,6 @@
 
 <script>
 import cardComponent from "./cardComponent.vue";
-const axios = require("axios").default;
 export default {
   components: { cardComponent },
 
@@ -25,17 +24,19 @@ export default {
       posters: [],
     };
   },
-  created() {
-    axios.get("https://flynn.boolean.careers/exercises/api/array/music").then((response) => {
-      this.posters = [...response.data.response];
-    });
+  props: {
+    data: Array
   },
+  mounted() {
+    this.posters = this.data
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
     .row {
+        
         .cards{
             margin: 1rem
         }
