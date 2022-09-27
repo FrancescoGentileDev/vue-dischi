@@ -2,8 +2,9 @@
   <div class="" id="app">
       
       <header-section/>
+
       <loader-component v-if="data.length == 0"/>
-      <content-section v-else :data="data"/>
+      <content-section v-cloak v-else :data="data"/>
   </div>
 </template>
 
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "/node_modules/bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap.scss";
 @import "@/variables";
 body {
   background-color: $primary-color;
